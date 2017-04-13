@@ -65,7 +65,7 @@ func (s *Server) Stop() error {
 func (s *Server) handler(w http.ResponseWriter, r *http.Request) {
 	log.Debugf("method [%s] uri [%s] ", r.Method, r.RequestURI)
 	if r.Method != "POST" {
-		responceError(w, fmt.Errorf("Bad method"))
+		showForm(w)
 		return
 	}
 	var (
@@ -156,6 +156,7 @@ func responceError(w http.ResponseWriter, err error) {
 <center><h1>400 Bad Request</h1></center>
 <center>%s</center>
 <hr><center>candy-upload</center>
+<br><br><br><center><a href="">back</a></center>
 </body>
 </html>
 `
@@ -171,9 +172,30 @@ func responceOK(w http.ResponseWriter, s string) {
 <center><h1>201 Created</h1></center>
 <center>%s</center>
 <hr><center>candy-upload</center>
+<br><br><br><center><a href="">back</a></center>
 </body>
 </html>
 `
 	w.WriteHeader(http.StatusCreated)
 	fmt.Fprintf(w, body, s)
+}
+
+func showForm(w http.ResponseWriter) {
+	body := `
+<html>
+  <head><title>Upload file</title></head>
+  <body>
+    <center>
+    <h1>Upload file</h1>
+    <hr>
+    <form enctype="multipart/form-data" method="post">
+      <input type="file" name="uploadfile" />
+      <input type="submit" value="upload" />
+    </form>
+    <hr>
+    </center>
+  </body>
+</html>
+`
+	fmt.Fprintf(w, body)
 }

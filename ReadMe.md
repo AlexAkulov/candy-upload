@@ -3,6 +3,7 @@ Candy Upload
 
 Very simple backend for upload and processing files
 
+[![Build Status](https://travis-ci.org/AlexAkulov/candy-upload.svg?branch=master)](https://travis-ci.org/AlexAkulov/candy-upload)
 
 upload via curl
 ```

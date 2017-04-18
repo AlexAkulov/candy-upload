@@ -1,0 +1,31 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "QA9+WE5fPf5hk+o20XAzgjxy2tc=",
+			"path": "github.com/op/go-logging",
+			"revision": "d2e44aa77b7195c0ef782189985dd8550e22e4de",
+			"revisionTime": "2016-02-17T08:34:21Z"
+		},
+		{
+			"checksumSHA1": "7pwNi6OV1KCJLv76PrzW//SrGS8=",
+			"path": "github.com/spf13/pflag",
+			"revision": "5ccb023bc27df288a957c5e994cd44fd19619465",
+			"revisionTime": "2016-10-24T13:13:51Z"
+		},
+		{
+			"checksumSHA1": "EbS5u6vxs3VwGQYgMeoqdHYy70E=",
+			"path": "gopkg.in/tomb.v2",
+			"revision": "14b3d72120e8d10ea6e6b7f87f7175734b1faab8",
+			"revisionTime": "2014-06-26T14:46:23Z"
+		},
+		{
+			"checksumSHA1": "BPhxcRGzP5KuS6cpeaYdADaRV4k=",
+			"path": "gopkg.in/yaml.v2",
+			"revision": "f7716cbe52baa25d2e9b0d0da546fcf909fc16b4",
+			"revisionTime": "2015-12-01T16:27:45Z"
+		}
+	],
+	"rootPath": "github.com/AlexAkulov/candy-upload"
+}

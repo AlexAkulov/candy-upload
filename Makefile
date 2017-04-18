@@ -10,7 +10,11 @@ default: build
 test:
 	echo "No tests"
 
-build: clean
+prepare:
+	go get github.com/kardianos/govendor
+	govendor sync
+
+build: clean prepare
 	mkdir -p build/root/usr/bin/
 	go build  ${LDFLAGS} -o build/root/usr/bin/${NAME}
 

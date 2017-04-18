@@ -8,10 +8,10 @@ addons:
       rpm
 install:
   - gem install fpm
-script:
-  - make test
-  - make tar
-  - make rpm
+script: |
+  make test && \
+  make tar && \
+  make rpm
 
 before_deploy:
   - export PACKAGE_NAME=$(ls build/candy-upload-*.x86_64.rpm | tail -n1)

@@ -17,16 +17,20 @@ import (
 )
 
 type Server struct {
-	config *Config
-	log    *logging.Logger
+	Config *Config
+	Log    *logging.Logger
 	tomb   tomb.Tomb
 }
 
+func (s *Server) SetLogger() {
+	log = s.Log
+}
+
 func (s *Server) Start() error {
-	log = s.log
+	s.SetLogger()
 
 	server := &http.Server{
-		Addr:    s.config.Listen,
+		Addr:    s.Config.Listen,
 		Handler: http.HandlerFunc(s.handler),
 	}
 
@@ -104,7 +108,7 @@ func (s *Server) executeScritps(location *Location, fileName string) error {
 	defer cancel()
 
 	script := strings.Replace(location.BashExec, "%filename%", fileName, -1)
-	cmd := exec.CommandContext(ctx, "/bin/bash", "-c", script)
+	cmd := exec.CommandContext(ctx, "/bin/bash", "-e", "-u", "-x", "-c", script)
 	out, err := cmd.CombinedOutput()
 	if err != nil {
 		return fmt.Errorf("location [%s] script status [%v] output [%s]", location.SavePath, err, string(out))
@@ -117,7 +121,7 @@ func (s *Server) getLocation(r *http.Request) (*Location, error) {
 	var (
 		location *Location
 	)
-	for _, location = range s.config.Locations {
+	for _, location = range s.Config.Locations {
 		if r.RequestURI == location.URI {
 			return location, nil
 		}

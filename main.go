@@ -50,8 +50,8 @@ func main() {
 	}
 
 	s := &Server{
-		config: config,
-		log:    log,
+		Config: config,
+		Log:    log,
 	}
 
 	if err := s.Start(); err != nil {

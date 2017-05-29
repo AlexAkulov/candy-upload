@@ -7,12 +7,14 @@ LDFLAGS := -ldflags "-X main.version=${VERSION}-${RELEASE} -X main.goVersion=${G
 
 default: build
 
-test:
-	echo "No tests"
+test: prepare_test
+	go test -v
+
+prepare_test:
+	go get "github.com/smartystreets/goconvey"
 
 prepare:
-	go get github.com/kardianos/govendor
-	govendor sync
+	echo "All ready"
 
 build: clean prepare
 	mkdir -p build/root/usr/bin/

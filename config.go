@@ -18,7 +18,6 @@ type Location struct {
 	SavePath        string `yaml:"save_path"`
 	BashExecTimeout int64  `yaml:"bash_exec_timeout"`
 	BashExec        string `yaml:"bash_exec"`
-	Sync            bool   `yaml:"sync"`
 }
 
 type Config struct {

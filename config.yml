@@ -6,7 +6,6 @@ locations:
     filename_re: rpm$
     uri: /pkg/CentOS/7/Packages
     save_path: /tmp/
-    sync: false
     bash_exec_timeout: 30
     bash_exec: |
       expect <<EOD
@@ -21,7 +20,6 @@ locations:
   - description: "Add zip"
     filename_re: zip$
     uri: /pkg/zip
-    sync: true
     save_path: /srv/www/repo/pkg/zip
     bash_exec: |
       cd /srv/www/repo/pkg/zip || exit 1

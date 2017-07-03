@@ -122,7 +122,7 @@ func (s *Server) getLocation(r *http.Request) (*Location, error) {
 		location *Location
 	)
 	for _, location = range s.Config.Locations {
-		if r.RequestURI == location.URI {
+		if strings.TrimRight(r.RequestURI, "/")  == strings.TrimRight(location.URI, "/") {
 			return location, nil
 		}
 	}
